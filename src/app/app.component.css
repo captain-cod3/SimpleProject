@@ -1,0 +1,23 @@
+li{
+    list-style: none;
+}
+body{
+    position: absolute;
+  }
+  mat-grid-tile {
+  background: lightblue;
+}
+.container{
+  position: relative;
+  width: 100%;
+  top: 10%;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: cent;
+}
+
+app-task{
+  width: 80%;
+}

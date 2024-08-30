@@ -1,0 +1,24 @@
+.item-space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item-space-around{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.progress-bar{
+    margin: 10px;
+}
+
+.align-center{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+button{
+    margin:15px;
+    width: 15%;
+}

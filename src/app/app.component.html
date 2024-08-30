@@ -1,0 +1,31 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  
+</style>
+
+
+<div class="container">
+  <div class="center">
+    <mat-grid-tile-header className="center"><h1>Task List</h1></mat-grid-tile-header>
+  </div>
+  <mat-grid-list cols="2" rowHeight="3:2">
+    <mat-grid-tile><ul>
+      @for (item of listOfUsers; track $index) {
+      <li>
+        <app-user [user]="item" (selectedUserData)="handleSelectedUserData($event)" />
+      </li>
+      }
+    </ul></mat-grid-tile>
+    <mat-grid-tile><app-task [user]="selectedUser" (UpdateUserTaskCount)="handleUpdateUserTaskCount($event)"></app-task></mat-grid-tile>
+  </mat-grid-list>
+  
+
+</div>

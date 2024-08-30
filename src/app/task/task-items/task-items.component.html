@@ -1,0 +1,32 @@
+<div>
+    <mat-card appearance="outlined">
+        <mat-card-content>
+            <mat-list role="list">
+                @for (item of taskItems; track item.taskId)
+                {
+                <mat-list-item role="listitem">
+                    <div class="item-space-between">
+                        <div>
+                            @if (item.status === 3)
+                            {
+                                <s>{{item.description}}</s>
+                            }
+                            @else{
+                                {{item.description}}
+                            }
+                        </div>
+                        <div>
+                            <button mat-raised-button (click)="onHandleCompletedTask(item.taskId)">
+                                <mat-icon>check_circle_outline</mat-icon>
+                            </button>
+                            <button mat-raised-button (click)="onHandleDeletedTask(item.taskId)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-list-item>
+                }
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

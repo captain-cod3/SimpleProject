@@ -1,0 +1,46 @@
+<div>
+    <div class="align-center">
+        <h3> {{user?.name}} </h3>
+    </div>
+    <div class="item-space-between">
+        @if(SelectedUserTasks.isAllTaskCompleted && SelectedUserTasks.totalTask > 0){
+            <p>Task Status</p>
+            <mat-icon>check_circle</mat-icon>
+        }
+        @else if(SelectedUserTasks.totalTask > 0){
+            <p>Task Status</p>
+            <p>{{SelectedUserTasks.completedTask}} / {{SelectedUserTasks.totalTask}}</p>
+        }
+    </div>
+    <div class="progress-bar">
+        @if(SelectedUserTasks.totalTask > 0){
+            <mat-progress-bar mode="determinate" [value]="SelectedUserTasks.progressMeter"></mat-progress-bar>
+        }
+    </div>
+    
+    @if(user === undefined)
+    {
+    <div class="align-center">
+        <h2>No data to display</h2>
+    </div>
+    }
+    @else 
+    {
+        @if(SelectedUserTasks.totalTask > 0)
+        {
+            <app-task-items [taskItems]="SelectedUserTasks.taskList" (ActionOnTask)="handleActionOnTask($event)"></app-task-items>
+        }
+        @else{
+            <p class="align-center">No new tasks.</p>
+        }
+        <div class="align-center">
+            <button mat-fab extended class="item-space-around">
+                <mat-icon>work</mat-icon>
+                <p>Add Task</p>
+              </button>
+        </div>
+    }
+</div>
+<div>
+    <app-new-task></app-new-task>
+</div>
