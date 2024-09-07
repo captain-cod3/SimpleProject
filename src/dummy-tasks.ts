@@ -6,7 +6,7 @@ export const DUMMY_TASKS = [
         taskId: 1,
         description : "Do homework.",
         userId: 1,
-        status: TaskStatus.InProgress
+        status: TaskStatus.Done
     },
     {
         taskId: 2,

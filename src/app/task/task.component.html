@@ -34,7 +34,7 @@
             <p class="align-center">No new tasks.</p>
         }
         <div class="align-center">
-            <button mat-fab extended class="item-space-around">
+            <button mat-fab extended class="item-space-around task-button" (click)="openTaskModal(true)">
                 <mat-icon>work</mat-icon>
                 <p>Add Task</p>
               </button>
@@ -42,5 +42,18 @@
     }
 </div>
 <div>
-    <app-new-task></app-new-task>
+    @if(isAddTaskVisible)
+    {
+        <div>
+            <div class="item-space-between">
+                <h2>Add a new Task</h2>
+                <div class="example-button-container">
+                    <button mat-fab (click)="closeTaskModal(false)">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </div>
+            </div>
+            <app-new-task [userId] = "user?.id" (handleAddNewTask)="handleAddNewTask($event)"></app-new-task>
+        </div>
+    }
 </div>

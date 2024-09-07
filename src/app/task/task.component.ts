@@ -17,13 +17,13 @@ import { NewTaskComponent } from '../new-task/new-task.component';
   imports: [TaskItemsComponent,MatIconModule,MatProgressBarModule, NewTaskComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskComponent {
   @Input() user: UserModel | undefined;
   listOfTasks = DUMMY_TASKS;
-  itemTobeUpdated : TaskModel | undefined
-  
+  itemTobeUpdated : TaskModel | undefined;
+  isAddTaskVisible : boolean =  false;
   
   get SelectedUserTasks() {
     let totalTaskCount = this.listOfTasks.filter(x=>x.userId === this.user?.id).length;
@@ -39,7 +39,7 @@ export class TaskComponent {
     }
   }
 
-
+ 
   handleActionOnTask($event: TaskActions) 
   {
     switch(+$event.action)
@@ -63,5 +63,19 @@ export class TaskComponent {
       break;
       default : break;
     }
+  }
+
+  openTaskModal(isVisible:boolean){
+    this.isAddTaskVisible = isVisible;
+    console.log(this.isAddTaskVisible);
+  }
+  closeTaskModal(isVisible:boolean){
+    this.isAddTaskVisible = isVisible;
+    console.log(this.isAddTaskVisible);
+  }
+
+  handleAddNewTask(data : TaskModel){
+    this.listOfTasks.push(data);
+    this.closeTaskModal(false);
   }
 }
