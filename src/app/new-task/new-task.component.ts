@@ -7,6 +7,7 @@ import { TaskStatus } from '../../enums/TaskStatusEnums';
 import { FormsModule } from '@angular/forms';
 import { DUMMY_TASKS } from '../../dummy-tasks';
 import { TaskModel } from '../../Interfaces/TaskModel';
+import { TaskService } from '../task/task.service';
 
 @Component({
   selector: 'app-new-task',
@@ -23,7 +24,9 @@ import { TaskModel } from '../../Interfaces/TaskModel';
 })
 export class NewTaskComponent {
   @Input() userId: number | undefined;
-  @Output() handleAddNewTask = new EventEmitter<TaskModel>();
+  // @Output() handleAddNewTask = new EventEmitter<TaskModel>();
+
+  constructor(private taskService : TaskService) {}
 
   get GenerateTaskId() {
     let result = DUMMY_TASKS.reduce((prev, curr) =>
@@ -49,7 +52,8 @@ export class NewTaskComponent {
       this.formData.description = this.taskDescription;
       this.formData.status = +this.taskStatus!;
       this.formData.taskId = this.GenerateTaskId;
-      this.handleAddNewTask.emit(this.formData);
+      // this.handleAddNewTask.emit(this.formData);
+      this.taskService.addNewTask(this.formData);
     }
   }
 }

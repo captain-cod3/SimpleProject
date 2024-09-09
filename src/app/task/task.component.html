@@ -28,7 +28,8 @@
     {
         @if(SelectedUserTasks.totalTask > 0)
         {
-            <app-task-items [taskItems]="SelectedUserTasks.taskList" (ActionOnTask)="handleActionOnTask($event)"></app-task-items>
+            <!-- <app-task-items [taskItems]="SelectedUserTasks.taskList" (ActionOnTask)="handleActionOnTask($event)"></app-task-items> -->
+            <app-task-items [taskItems]="SelectedUserTasks.taskList"></app-task-items>
         }
         @else{
             <p class="align-center">No new tasks.</p>
@@ -53,7 +54,8 @@
                     </button>
                   </div>
             </div>
-            <app-new-task [userId] = "user?.id" (handleAddNewTask)="handleAddNewTask($event)"></app-new-task>
+            <!-- <app-new-task [userId] = "user?.id" (handleAddNewTask)="handleAddNewTask($event)"></app-new-task> -->
+            <app-new-task [userId] = "user?.id"></app-new-task>
         </div>
     }
 </div>
